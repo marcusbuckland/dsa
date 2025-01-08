@@ -68,3 +68,23 @@ class LinkedList:
             self.head = node
         self.length += 1
         return True
+    
+    def pop_first(self):
+        # LinkedList is empty
+        if self.length == 0 :
+            return None
+        
+        # LinkedList contains one node only
+        if self.length == 1 :
+            temp = self.head
+            self.head = None
+            self.tail = None
+            self.length = 0
+            return temp
+        
+        # LinkedList contains two or more nodes
+        temp = self.head
+        self.head = self.head.next
+        temp.next = None
+        self.length -= 1
+        return temp

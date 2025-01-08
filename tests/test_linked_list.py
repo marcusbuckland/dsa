@@ -75,3 +75,30 @@ def test_prepend_02():
     assert ll.tail.value == 3
     assert ll.tail.next is None
     assert ll.length == 3
+
+def test_pop_first_01():
+    ll = LinkedList()
+    ll.append(1)
+    node = ll.pop_first()
+    assert ll.head is None
+    assert ll.tail is None
+    assert ll.length == 0
+    assert node.value == 1
+
+def test_pop_first_02():
+    ll = LinkedList()
+    for i in range(1, 10):
+        ll.append(i)
+    node = ll.pop_first() # 1
+    assert ll.head.value == 2
+    assert ll.tail.value == 9
+    assert ll.length == 8
+    assert node.value == 1
+    node = ll.pop_first() # 2
+    node = ll.pop_first() # 3
+    node = ll.pop_first() # 4
+    node = ll.pop_first() # 5
+    assert ll.head.value == 6
+    assert ll.tail.value == 9
+    assert ll.length == 4
+    assert node.value == 5
