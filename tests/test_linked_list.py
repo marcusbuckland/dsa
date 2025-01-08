@@ -55,3 +55,23 @@ def test_pop_02():
     assert ll.tail.value == 4
     assert ll.length == 4
     assert node.value == 5
+
+def test_prepend_01():
+    ll = LinkedList()
+    ll.prepend(1)
+    assert ll.head.value == 1
+    assert ll.tail.value == 1
+    assert ll.head.next is None
+    assert ll.tail.next is None
+    assert ll.length == 1
+
+def test_prepend_02():
+    ll = LinkedList()
+    ll.append(2)
+    ll.append(3)
+    ll.prepend(1)
+    assert ll.head.value == 1
+    assert ll.head.next.value == 2
+    assert ll.tail.value == 3
+    assert ll.tail.next is None
+    assert ll.length == 3

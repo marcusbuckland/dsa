@@ -58,22 +58,13 @@ class LinkedList:
         self.length -= 1
         return temp
 
-ll = LinkedList(4)
-ll.append(5)
-ll.append(6)
-
-
-print('Head:', ll.head.value)
-print('Tail:', ll.tail.value)
-print('Length:', ll.length)
-
-
-"""
-    EXPECTED OUTPUT:
-    ----------------
-    Head: 4
-    Tail: 6
-    Length: 3
-    
-"""
-
+    def prepend(self, value):
+        node = Node(value)
+        if self.head is None:
+            self.head = node
+            self.tail = node
+        else:
+            node.next = self.head
+            self.head = node
+        self.length += 1
+        return True
