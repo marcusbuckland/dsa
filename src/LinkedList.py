@@ -89,7 +89,7 @@ class LinkedList:
         self.length -= 1
         return temp
 
-    def get(self, index):
+    def get_node(self, index):
         """ Get the node at the given index 
         Args:
             index (int): Index of the node to get"""
@@ -100,3 +100,14 @@ class LinkedList:
         for _ in range(index):
             temp = temp.next
         return temp
+
+    def set_node(self, index, value):
+        """ Set the value of the node at the given index 
+        Args:
+            index (int): Index of the node to set
+            value (int): Value to set"""
+        temp = self.get_node(index)
+        if temp is not None:
+            temp.value = value
+            return True
+        return False

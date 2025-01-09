@@ -103,21 +103,37 @@ def test_pop_first_02():
     assert ll.length == 4
     assert node.value == 5
 
-def test_get_01():
+def test_get_node_01():
     ll = LinkedList()
     ll.append(1)
-    assert ll.get(0).value == 1
+    assert ll.get_node(0).value == 1
 
-def test_get_02():
+def test_get_node_02():
     ll = LinkedList()
     for i in range(1, 10):
         ll.append(i)
-    assert ll.get(0).value == 1
-    assert ll.get(1).value == 2
-    # assert ll.get(2).value == 3
-    # assert ll.get(3).value == 4
-    # assert ll.get(4).value == 5
-    # assert ll.get(5).value == 6
-    # assert ll.get(6).value == 7
-    # assert ll.get(7).value == 8
-    # assert ll.get(8).value == 9
+    assert ll.get_node(0).value == 1
+    assert ll.get_node(1).value == 2
+    assert ll.get_node(2).value == 3
+    assert ll.get_node(3).value == 4
+    assert ll.get_node(4).value == 5
+    assert ll.get_node(5).value == 6
+    assert ll.get_node(6).value == 7
+    assert ll.get_node(7).value == 8
+    assert ll.get_node(8).value == 9
+
+def test_set_node_01():
+    ll = LinkedList()
+    for i in range(1, 10):
+        ll.append(i)
+    ll.set_node(0, 100)
+    ll.set_node(1, 200)
+    ll.set_node(2, 300)
+    assert ll.get_node(0).value == 100
+    assert ll.get_node(1).value == 200
+    assert ll.get_node(2).value == 300
+
+def test_set_node_02():
+    ll = LinkedList()
+    ll.set_node(0, 100)
+    assert ll.head is None
