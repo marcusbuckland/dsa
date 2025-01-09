@@ -102,3 +102,22 @@ def test_pop_first_02():
     assert ll.tail.value == 9
     assert ll.length == 4
     assert node.value == 5
+
+def test_get_01():
+    ll = LinkedList()
+    ll.append(1)
+    assert ll.get(0).value == 1
+
+def test_get_02():
+    ll = LinkedList()
+    for i in range(1, 10):
+        ll.append(i)
+    assert ll.get(0).value == 1
+    assert ll.get(1).value == 2
+    # assert ll.get(2).value == 3
+    # assert ll.get(3).value == 4
+    # assert ll.get(4).value == 5
+    # assert ll.get(5).value == 6
+    # assert ll.get(6).value == 7
+    # assert ll.get(7).value == 8
+    # assert ll.get(8).value == 9

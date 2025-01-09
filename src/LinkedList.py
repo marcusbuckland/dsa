@@ -88,3 +88,15 @@ class LinkedList:
         temp.next = None
         self.length -= 1
         return temp
+
+    def get(self, index):
+        """ Get the node at the given index 
+        Args:
+            index (int): Index of the node to get"""
+        if index < 0 or index >= self.length:
+            return None
+        
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp
