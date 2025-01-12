@@ -137,3 +137,33 @@ def test_set_node_02():
     ll = LinkedList()
     ll.set_node(0, 100)
     assert ll.head is None
+
+def test_insert_01():
+    ll = LinkedList()
+    ll.insert(0, 1)
+    assert ll.head.value is 1
+    assert ll.head.next is None
+
+def test_insert_02():
+    ll = LinkedList()
+    ll.append(1)
+    ll.append(4)
+    ll.append(5)
+    ll.insert(1, 200)
+    ll.insert(2, 300)
+    assert ll.get_node(0).value == 1
+    assert ll.get_node(1).value == 200
+    assert ll.get_node(2).value == 300
+    assert ll.get_node(3).value == 4
+    assert ll.get_node(4).value == 5
+
+def test_remove_01():
+    ll = LinkedList(1)
+    ll.append(2)
+    ll.append(3)
+    ll.append(4)
+    ll.append(5)
+    ll.remove(index=2)
+    assert ll.length == 4
+    node = ll.get_node(index=2)
+    assert node.value == 4
