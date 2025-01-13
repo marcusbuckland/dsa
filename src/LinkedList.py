@@ -15,11 +15,21 @@ class LinkedList:
             self.tail = None
             self.length = 0
 
+    def __str__(self):
+        temp = self.head
+        l = []
+        while temp is not None:
+            l.append(f"({temp.value})->")
+            temp = temp.next
+        return "".join(l)
+
     def print_list(self):
         temp = self.head
+        l = []
         while temp is not None:
-            print(temp.value)
+            l.append(f"({temp.value})->")
             temp = temp.next
+        print("".join(l))
 
     def append(self, value):
         node = Node(value)
@@ -143,3 +153,15 @@ class LinkedList:
         temp.next = None
         self.length -= 1
         return temp
+    
+    def reverse(self):
+        temp = self.head
+        self.head, self.tail = self.tail, self.head # reverse head & tail
+        after = temp.next
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
