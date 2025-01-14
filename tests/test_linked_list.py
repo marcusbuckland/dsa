@@ -192,3 +192,19 @@ def test_get_middle_node_02():
     ll.append('C')
     ll.append('D')
     assert str(ll.get_middle_node()) == '(C)'
+
+def test_has_loop_01():
+    ll = LinkedList('A')
+    ll.append('B')
+    ll.append('C')
+    ll.append('D')
+    ll.tail.next = ll.head.next.next # create loop
+    assert ll.has_loop()
+
+
+def test_has_loop_02():
+    ll = LinkedList('A')
+    ll.append('B')
+    ll.append('C')
+    ll.append('D')
+    assert not ll.has_loop()

@@ -180,15 +180,13 @@ class LinkedList:
 
         return slow
 
+    def has_loop(self):
+        slow = self.head
+        fast = self.head
 
-ll = LinkedList('A')
-ll.append('B')
-ll.append('C')
-ll.append('D')
-ll.append('E')
-print(ll)
-print('')
-print('reversing...')
-print('')
-ll.reverse()
-print(ll)
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast : return True
+        
+        return False
