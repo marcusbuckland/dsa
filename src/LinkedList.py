@@ -2,6 +2,9 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
+
+    def __str__(self):
+        return f"({self.value})"
         
 class LinkedList:
     def __init__(self, value=None):
@@ -165,6 +168,17 @@ class LinkedList:
             temp.next = before
             before = temp
             temp = after
+
+    def get_middle_node(self):
+        # Note- Implementation cannot use self.length
+        slow = self.head
+        fast = self.head
+
+        while fast is not None and fast != self.tail:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow
 
 
 ll = LinkedList('A')

@@ -177,3 +177,18 @@ def test_reverse_01():
     ll.reverse()
     expected = "(3)->(2)->(1)->None"
     assert str(ll) == expected
+
+def test_get_middle_node_01():
+    ll = LinkedList('A')
+    ll.append('B')
+    ll.append('C')
+    ll.append('D')
+    ll.append('E')
+    assert str(ll.get_middle_node()) == '(C)'
+
+def test_get_middle_node_02():
+    ll = LinkedList('A')
+    ll.append('B')
+    ll.append('C')
+    ll.append('D')
+    assert str(ll.get_middle_node()) == '(C)'
