@@ -21,6 +21,7 @@ class LinkedList:
         while temp is not None:
             l.append(f"({temp.value})->")
             temp = temp.next
+        l.append(f"{self.tail.next}")
         return "".join(l)
 
     def print_list(self):
@@ -165,3 +166,15 @@ class LinkedList:
             before = temp
             temp = after
 
+
+ll = LinkedList('A')
+ll.append('B')
+ll.append('C')
+ll.append('D')
+ll.append('E')
+print(ll)
+print('')
+print('reversing...')
+print('')
+ll.reverse()
+print(ll)

@@ -167,3 +167,13 @@ def test_remove_01():
     assert ll.length == 4
     node = ll.get_node(index=2)
     assert node.value == 4
+
+def test_reverse_01():
+    ll = LinkedList(1)
+    ll.append(2)
+    ll.append(3)
+    expected = "(1)->(2)->(3)->None"
+    assert str(ll) == expected
+    ll.reverse()
+    expected = "(3)->(2)->(1)->None"
+    assert str(ll) == expected
