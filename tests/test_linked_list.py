@@ -1,4 +1,5 @@
 from src.LinkedList import LinkedList
+from src.LinkedList import find_kth_from_end
 
 def test_append_01():
     ll = LinkedList()
@@ -208,3 +209,30 @@ def test_has_loop_02():
     ll.append('C')
     ll.append('D')
     assert not ll.has_loop()
+
+def test_find_kth_from_end_01():
+    ll = LinkedList()
+    assert find_kth_from_end(ll, 0) is None
+    assert find_kth_from_end(ll, 1) is None
+    assert find_kth_from_end(ll, 2) is None
+
+def test_find_kth_from_end_02():
+    ll = LinkedList('A')
+    ll.append('B')
+    ll.append('C')
+    ll.append('D')
+    assert find_kth_from_end(ll, 4).value is 'A'
+
+def test_find_kth_from_end_03():
+    ll = LinkedList('A')
+    ll.append('B')
+    ll.append('C')
+    ll.append('D')
+    assert find_kth_from_end(ll, 1).value is 'D'
+
+def test_find_kth_from_end_04():
+    ll = LinkedList('A')
+    ll.append('B')
+    ll.append('C')
+    ll.append('D')
+    assert find_kth_from_end(ll, 99) is None
