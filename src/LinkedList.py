@@ -253,3 +253,25 @@ class LinkedList:
             nums.append(str(temp.value))
             temp = temp.next
         return int("".join(nums), base=2)
+
+    def reverse_between(self, start_index, finish_index):
+        if self.length <= 1 : return
+
+        dummy = Node()
+        dummy.next = self.head
+        previous_node = dummy
+
+        for _ in range(start_index):
+            # Move window along
+            previous_node = previous_node.next
+
+        current_node = previous_node.next
+
+        # Now we start to reverse
+        for _ in range(finish_index - start_index):
+            node_to_move = current_node.next
+            current_node.next = node_to_move.next
+            node_to_move.next = previous_node.next
+            previous_node.next = node_to_move
+
+        self.head = dummy.next
