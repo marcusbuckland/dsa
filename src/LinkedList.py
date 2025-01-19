@@ -244,3 +244,12 @@ class LinkedList:
 
         self.tail = prev
         self.tail.next = None
+
+    def binary_to_decimal(self):
+        if self.head is None : return None
+        nums = []
+        temp = self.head
+        while temp:
+            nums.append(str(temp.value))
+            temp = temp.next
+        return int("".join(nums), base=2)
