@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, value):
+    def __init__(self, value=None):
         self.value = value
         self.next = None
 
@@ -22,10 +22,9 @@ class LinkedList:
         temp = self.head
         l = []
         while temp is not None:
-            l.append(f"({temp.value})->")
+            l.append(f"({temp.value})")
             temp = temp.next
-        l.append(f"{self.tail.next}")
-        return "".join(l)
+        return "->".join(l)
 
     def print_list(self):
         temp = self.head
@@ -191,6 +190,27 @@ class LinkedList:
         
         return False
     
+    def partition_list(self, value):
+        left = Node()
+        right = Node()
+        prev_left = left
+        prev_right = right
+        temp = self.head
+        while temp is not None:
+            if temp.value < value:
+                prev_left.next = temp
+                prev_left = prev_left.next
+            else:
+                prev_right.next = temp
+                prev_right = prev_right.next
+            
+            temp = temp.next
+        
+        self.head = left.next if left.next is not None else right.next
+        prev_left.next = right.next
+        self.tail = prev_right
+        self.tail.next = None
+
 def find_kth_from_end(ll, k):
     slow = ll.head
     fast = ll.head

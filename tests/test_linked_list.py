@@ -173,10 +173,10 @@ def test_reverse_01():
     ll = LinkedList(1)
     ll.append(2)
     ll.append(3)
-    expected = "(1)->(2)->(3)->None"
+    expected = "(1)->(2)->(3)"
     assert str(ll) == expected
     ll.reverse()
-    expected = "(3)->(2)->(1)->None"
+    expected = "(3)->(2)->(1)"
     assert str(ll) == expected
 
 def test_get_middle_node_01():
@@ -236,3 +236,73 @@ def test_find_kth_from_end_04():
     ll.append('C')
     ll.append('D')
     assert find_kth_from_end(ll, 99) is None
+
+
+def test_partition_list_01():
+    # Normal Case
+    x = 3
+    ll = LinkedList(3)
+    ll.append(1)
+    ll.append(4)
+    ll.append(2)
+    ll.append(5)
+    assert str(ll) == "(3)->(1)->(4)->(2)->(5)"
+    ll.partition_list(x)
+    assert str(ll) == "(1)->(2)->(3)->(4)->(5)"
+
+def test_partition_list_02():
+    # All Equal Values
+    x = 3
+    ll = LinkedList(3)
+    ll.append(3)
+    ll.append(3)
+    assert str(ll) == "(3)->(3)->(3)"
+    ll.partition_list(x)
+    assert str(ll) == "(3)->(3)->(3)"
+    
+def test_partition_list_03():
+    # Single Element
+    x = 3
+    ll = LinkedList(1)
+    assert str(ll) == "(1)"
+    ll.partition_list(x)
+    assert str(ll) == "(1)"
+
+def test_partition_list_04():
+    # Already Sorted
+    x = 2
+    ll = LinkedList(1)
+    ll.append(2)
+    ll.append(3)
+    assert str(ll) == "(1)->(2)->(3)"
+    ll.partition_list(x)
+    assert str(ll) == "(1)->(2)->(3)"
+
+def test_partition_list_05():
+    # Reverse Sorted
+    x = 2
+    ll = LinkedList(3)
+    ll.append(2)
+    ll.append(1)
+    assert str(ll) == "(3)->(2)->(1)"
+    ll.partition_list(x)
+    assert str(ll) == "(1)->(3)->(2)"
+
+def test_partition_list_06():
+    # All Smaller Values
+    x = 2
+    ll = LinkedList(1)
+    ll.append(1)
+    ll.append(1)
+    assert str(ll) == "(1)->(1)->(1)"
+    ll.partition_list(x)
+    assert str(ll) == "(1)->(1)->(1)"
+
+
+def test_partition_list_07():
+    # Single Element, Equal to Partition
+    x = 3
+    ll = LinkedList(3)
+    assert str(ll) == "(3)"
+    ll.partition_list(x)
+    assert str(ll) == "(3)"
