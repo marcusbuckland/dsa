@@ -1,3 +1,17 @@
+def find_kth_from_end(ll, k):
+    slow = ll.head
+    fast = ll.head
+
+    for _ in range(k):
+        if fast is None : return None
+        fast = fast.next
+
+    while fast is not None:
+        slow = slow.next
+        fast = fast.next
+
+    return slow
+
 class Node:
     def __init__(self, value=None):
         self.value = value
@@ -211,16 +225,22 @@ class LinkedList:
         self.tail = prev_right
         self.tail.next = None
 
-def find_kth_from_end(ll, k):
-    slow = ll.head
-    fast = ll.head
+    def remove_duplicates(self):
+        if self.head is None : return None
+        seen = set() # Keep track of all values that have been seen
+        prev = temp = self.head
+        seen.add(prev.value)
 
-    for _ in range(k):
-        if fast is None : return None
-        fast = fast.next
+        while temp is not None:
+            if temp.value in seen :
+                temp = temp.next
+                continue
 
-    while fast is not None:
-        slow = slow.next
-        fast = fast.next
+            # value hasn't been seen
+            seen.add(temp.value)
+            prev.next = temp
+            prev = prev.next
+            temp = temp.next
 
-    return slow
+        self.tail = prev
+        self.tail.next = None

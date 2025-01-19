@@ -306,3 +306,69 @@ def test_partition_list_07():
     assert str(ll) == "(3)"
     ll.partition_list(x)
     assert str(ll) == "(3)"
+
+def test_remove_duplicates_01():
+    # List with no duplicates
+    ll = LinkedList(1)
+    ll.append(2)
+    ll.append(3)
+    ll.remove_duplicates()
+    assert str(ll) == "(1)->(2)->(3)"
+
+def test_remove_duplicates_02():
+    # List with some duplicates
+    ll = LinkedList(3)
+    ll.append(4)
+    ll.append(4)
+    ll.append(5)
+    ll.append(5)
+    ll.append(6)
+    assert str(ll) == "(3)->(4)->(4)->(5)->(5)->(6)"
+    ll.remove_duplicates()
+    assert str(ll) == "(3)->(4)->(5)->(6)"
+
+
+def test_remove_duplicates_03():
+    # List with only duplicates
+    ll = LinkedList(1)
+    ll.append(1)
+    ll.append(1)
+    ll.remove_duplicates()
+    assert str(ll) == "(1)"
+
+def test_remove_duplicates_04():
+    # List with consecutive duplicates
+    ll = LinkedList(1)
+    ll.append(1)
+    ll.append(2)
+    ll.append(2)
+    ll.append(3)
+    ll.remove_duplicates()
+    assert str(ll) == "(1)->(2)->(3)"
+
+def test_remove_duplicates_05():
+    # Test 5: List with non-consecutive duplicates
+    ll = LinkedList(1)
+    ll.append(2)
+    ll.append(1)
+    ll.append(3)
+    ll.append(2)
+    ll.append(4)
+    ll.remove_duplicates()
+    assert str(ll) == "(1)->(2)->(3)->(4)"
+
+def test_remove_duplicates_06():
+    # List with duplicates at the end
+    ll = LinkedList(1)
+    ll.append(2)
+    ll.append(3)
+    ll.append(3)
+    ll.remove_duplicates()
+    assert str(ll) == "(1)->(2)->(3)"
+
+def test_remove_duplicates_07():
+    # Empty list
+    ll = LinkedList()
+    assert str(ll) == ""
+    ll.remove_duplicates()
+    assert str(ll) == ""
