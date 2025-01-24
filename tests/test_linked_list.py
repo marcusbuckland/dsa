@@ -372,3 +372,56 @@ def test_remove_duplicates_07():
     assert str(ll) == ""
     ll.remove_duplicates()
     assert str(ll) == ""
+
+def test_reverse_between_01():
+    # Reverse entire list
+    ll = LinkedList(1)
+    ll.append(2)
+    ll.append(3)
+    ll.append(4)
+    ll.append(5)
+    assert str(ll) == "(1)->(2)->(3)->(4)->(5)"
+    ll.reverse_between(0, 4)
+    assert str(ll) == "(5)->(4)->(3)->(2)->(1)"
+
+def test_reverse_between_02():
+    # Last two elements
+    ll = LinkedList(1)
+    ll.append(2)
+    ll.append(3)
+    ll.append(4)
+    assert str(ll) == "(1)->(2)->(3)->(4)"
+    ll.reverse_between(2, 3)
+    assert str(ll) == "(1)->(2)->(4)->(3)"
+
+def test_reverse_between_03():
+    # Reverse middle three elements
+    ll = LinkedList(1)
+    ll.append(2)
+    ll.append(3)
+    ll.append(4)
+    ll.append(5)
+    assert str(ll) == "(1)->(2)->(3)->(4)->(5)"
+    ll.reverse_between(1, 3)
+    assert str(ll) == "(1)->(4)->(3)->(2)->(5)"
+
+def test_reverse_between_04():
+    # Single element
+    ll = LinkedList(1)
+    assert str(ll) == "(1)"
+    ll.reverse_between(0, 0)
+    assert str(ll) == "(1)"
+
+def test_reverse_between_04():
+    # Two elements
+    ll = LinkedList(1)
+    ll.append(2)
+    assert str(ll) == "(1)->(2)"
+    ll.reverse_between(0, 1)
+    assert str(ll) == "(2)->(1)"
+
+def test_reverse_between_05():
+    # Empty list
+    ll = LinkedList()
+    ll.reverse_between(0, 0)
+    assert str(ll) == ""
