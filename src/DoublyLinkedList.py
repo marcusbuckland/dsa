@@ -92,3 +92,19 @@ class DoublyLinkedList:
         temp.prev = None
         self.length -= 1
         return temp
+    
+    def get_node(self, index):
+        if index < 0 or index >= self.length:
+            return None
+
+        if index < self.length / 2: # index in 1st half of DLL
+            temp = self.head
+            for _ in range(index):
+                temp = temp.next
+            return temp
+        else: # index in 2nd half of DLL
+            temp = self.tail
+            tail_index = self.length - 1
+            for _ in range(start=tail_index, stop=index, step=-1):
+                temp = temp.prev
+            return temp
