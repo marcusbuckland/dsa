@@ -68,3 +68,27 @@ class DoublyLinkedList:
         
         self.length += 1
         return True
+
+    def pop_first(self):
+        # DLL is empty
+        if self.length == 0 :
+            return None
+        
+        # DLL contains one node only
+        if self.length == 1 :
+            temp = self.head
+            self.head = None
+            self.tail = None
+            temp.next = None
+            temp.prev = None
+            self.length = 0
+            return temp
+        
+        # DLL contains two or more nodes
+        temp = self.head
+        self.head = self.head.next
+        self.head.prev = None
+        temp.next = None
+        temp.prev = None
+        self.length -= 1
+        return temp

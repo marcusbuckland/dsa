@@ -135,3 +135,38 @@ def test_prepend_02():
     assert dll.tail.next is None
     assert dll.tail.prev.value == 2
     assert dll.length == 3
+
+def test_pop_first_01():
+    # Empty DLL
+    dll = DoublyLinkedList()
+    node = dll.pop_first()
+    assert node is None
+    assert dll.length == 0
+
+def test_pop_first_02():
+    # DLL with 1 node
+    dll = DoublyLinkedList(1)
+    dll.append(2)
+    node = dll.pop_first()
+    assert node.value == 1
+    assert dll.length == 1
+    assert dll.head.next is None
+    assert dll.head.prev is None
+
+def test_pop_first_03():
+    # DLL with 2+ nodes
+    dll = DoublyLinkedList(1)
+    dll.append(2)
+    dll.append(3)
+    dll.append(4)
+    node = dll.pop_first()
+    assert node.value == 1
+    assert dll.length == 3
+    assert dll.head.value == 2
+    assert dll.head.next.value == 3
+    assert dll.head.prev is None
+    node = dll.pop_first()
+    assert node.value == 2
+    assert dll.length == 2
+    assert dll.head.value == 3
+    assert dll.head.next.value == 4
